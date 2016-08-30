@@ -7,7 +7,7 @@
   </parent>
   <groupId>com.zoomulus</groupId>
   <artifactId>zoom-rs</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
   <name>ZoomRS</name>
   <description>Zoomulus JaxRS server, based atop com.zoomulus.servers</description>
   
