@@ -7,15 +7,15 @@ import com.google.inject.Guice;
 import com.google.inject.name.Names;
 import com.zoomulus.servers.ServerPort;
 import com.zoomulus.servers.http.HttpServer;
-import com.zoomulus.servers.http.responder.HttpResponder;
-import com.zoomulus.zoomrs.responder.JaxRsHttpResponder;
+import com.zoomulus.zoomrs.scanner.ResourceScanner;
+import com.zoomulus.zoomrs.testresource.TestJaxRsServerResource;
 
 public class TestJaxRsServerRunner
 {
-    private final HttpServer server;
+    private final JaxRsServer server;
     
     @Inject
-    public TestJaxRsServerRunner(final HttpServer server)
+    public TestJaxRsServerRunner(final JaxRsServer server)
     {
         this.server = server;
     }
@@ -31,9 +31,13 @@ public class TestJaxRsServerRunner
         {
             @Override protected void configure()
             {
-                bind(HttpResponder.class).to(JaxRsHttpResponder.class);
+                bind(String.class).annotatedWith(Names.named(JaxRsServer.CONTEXT_PATH))
+                .toInstance("/");
                 bind(Integer.class).annotatedWith(Names.named(HttpServer.LISTEN_PORT_NAME))
-                .toInstance(ServerPort.ZoomulusPort(ServerPort.PortNumber.HTTP));}            
+                .toInstance(ServerPort.ZoomulusPort(ServerPort.PortNumber.HTTP));
+                bind(String.class).annotatedWith(Names.named(ResourceScanner.RESOURCES_IDENTIFIER))
+                .toInstance(TestJaxRsServerResource.class.getPackage().getName());
+            }            
         }).getInstance(TestJaxRsServerRunner.class).run(args);
     }
 }

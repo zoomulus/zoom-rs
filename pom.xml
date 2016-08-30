@@ -9,7 +9,7 @@
   <artifactId>zoom-rs</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>ZoomRS</name>
-  <description>Zoomulus implementation of JaxRS, based atop com.zoomulus.servers</description>
+  <description>Zoomulus JaxRS server, based atop com.zoomulus.servers</description>
   
   <dependencies>
   
@@ -25,5 +25,17 @@
       <version>3.0.8.Final</version>
     </dependency>
     
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-servlet</artifactId>
+      <version>9.3.11.v20160721</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet-core</artifactId>
+      <version>2.23.2</version>
+    </dependency>
+
   </dependencies>
 </project>

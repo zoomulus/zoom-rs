@@ -16,29 +16,29 @@ import com.google.common.collect.Sets;
 import com.google.common.reflect.ClassPath;
 
 @Slf4j
-public class JaxRsResourceScanner
+public class ResourceScanner
 {
     public static final String RESOURCES_IDENTIFIER = "resources";
     
     private final List<String> resourceNames;
     
-    public JaxRsResourceScanner()
+    public ResourceScanner()
     {
         resourceNames = Lists.newArrayList();
     }
     
     @Inject
-    public JaxRsResourceScanner(@Named(RESOURCES_IDENTIFIER) final String resourceName)
+    public ResourceScanner(@Named(RESOURCES_IDENTIFIER) final String resourceName)
     {
         this(null != resourceName ? Lists.newArrayList(resourceName.split(",")) : Lists.newArrayList());
     }
     
-    public JaxRsResourceScanner(final List<String> resourceNames)
+    public ResourceScanner(final List<String> resourceNames)
     {
         this.resourceNames = null != resourceNames ? resourceNames : Lists.newArrayList();
     }
     
-    public JaxRsResourceScanner add(final String resourceName)
+    public ResourceScanner add(final String resourceName)
     {
         resourceNames.addAll(Lists.newArrayList(resourceName.split(",")));
         return this;

@@ -1,6 +1,6 @@
 package com.zoomulus.zoomrs.scanner;
 
-public class TestNotAJaxRsResourceB
+public class TestNotAResourceB
 {
 
 }
